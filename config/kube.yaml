@@ -1,0 +1,30 @@
+---
+apiVersion: "extensions/v1beta1"
+kind: "Deployment"
+metadata:
+  name: "spanner-prober"
+  namespace: "default"
+  labels:
+    app: "spanner-prober"
+spec:
+  selector:
+    matchLabels:
+      app: "spanner-prober-app"
+  template:
+    metadata:
+      labels:
+        app: "spanner-prober-app"
+    spec:
+      volumes:
+      - name: google-cloud-key
+        secret:
+          secretName: credentials-key
+      containers:
+      - name: "spannerprober"
+        image: "gcr.io/horizon-spanner-benchmark/spannerprober:tag11"
+        volumeMounts:
+        - name: google-cloud-key
+          mountPath: /var/secrets/google
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /var/secrets/google/key.json
