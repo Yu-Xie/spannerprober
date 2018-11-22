@@ -28,6 +28,6 @@ spec:
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /var/secrets/google/key.json
         - name: SOURCE_REGION
-          value: us-west1
+          value: southamerica-east1
         - name: SPANNER_NAME
-          value: nam3
+          value: nam6

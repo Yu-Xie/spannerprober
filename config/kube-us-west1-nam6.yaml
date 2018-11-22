@@ -30,4 +30,4 @@ spec:
         - name: SOURCE_REGION
           value: us-west1
         - name: SPANNER_NAME
-          value: nam3
+          value: nam6
